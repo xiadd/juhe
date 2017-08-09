@@ -1,8 +1,5 @@
-const express = require('express')
-const app = express()
+const app = require('./app')
 
-app.get('/', function (req, res) {
-  res.send('xiadd')
+app.listen(8080, function () {
+  console.log('server is running on port 8080')
 })
-
-app.listen(8080)
