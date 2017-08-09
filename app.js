@@ -18,6 +18,7 @@ nunjucks
   .addGlobal('loadCss', templateGlobal.loadCss)
   .addGlobal('loadScript', templateGlobal.loadScript)
 
+app.use('/static', express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "nodemon -e njk,js server",
     "createSuperUser": "node bin/createSuperUser",
     "serve": "webpack-dev-server --config static_config/webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
