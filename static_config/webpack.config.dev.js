@@ -2,11 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
+const getEntry = require('./getEntry')
 module.exports = {
   context: __dirname,
-  entry: [
-    '../public/index.js'
-  ],
+  entry: getEntry(path.resolve(__dirname, '../public/scripts')),
   output: {
     path: path.resolve('./public/bundles/'),
     filename: "[name]-[hash].js",

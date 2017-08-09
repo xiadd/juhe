@@ -1,5 +1,5 @@
 module.exports = {
   async userList (req, res) {
-    res.render('index.njk')
+    res.render('sign/login.njk')
   }
 }
