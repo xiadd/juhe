@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server",
     "createSuperUser": "node bin/createSuperUser",
+    "serve": "webpack-dev-server --config static_config/webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,12 +20,19 @@
     "lodash": "^4.17.4",
     "log4js": "^2.3.3",
     "mongoose": "^4.11.6",
+    "mz": "^2.6.0",
     "nodemailer": "^4.0.1",
     "nunjucks": "^3.0.1",
     "uuid": "^3.1.0",
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.4",
+    "nodemon": "^1.11.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.1",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-manifest-plugin": "^1.2.1"
   }
 }
