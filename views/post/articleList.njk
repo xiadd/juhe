@@ -1,0 +1,36 @@
+{% extends "../layout/default.njk" %}
+
+{% block container %}
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            文章列表
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive table-bordered">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>标题</th>
+                        <th>标签</th>
+                        <th>创建时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in articleList %}
+                        <tr>
+                            <td><a href="/admin/posts/{{ article.id }}">{{ article.id }}</a></td>
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.tag }}</td>
+                            <td>{{ article.created_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+{% endblock %}

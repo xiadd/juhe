@@ -28,5 +28,13 @@ module.exports = {
 
   async findUserByEmail (email) {
     return await User.findOne({ email: email })
+  },
+
+  async getUserList (pageSize) {
+    return await User.find().limit(pageSize)
+  },
+
+  async getUserById (id) {
+    return await User.findById(id)
   }
 }

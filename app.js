@@ -10,6 +10,18 @@ const routes = require('./api/routes')
 const adminRoutes = require('./admin/routes')
 const app = express()
 
+const adminSession =  session({
+  secret: config.session_secret,
+  store: new RedisStore({
+    port: config.redis_port,
+    host: config.redis_host,
+    db: config.redis_db,
+    pass: config.redis_password
+  }),
+  resave: false,
+  saveUninitialized: false
+})
+
 nunjucks
   .configure('views', {
     autoescape: true,
@@ -23,16 +35,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/api', routes)
-app.use('/admin', adminRoutes)
+app.use('/admin', adminSession, adminRoutes)
 
-app.use(session({
-  secret: config.session_secret,
-  store: new RedisStore({
-    url: config.redis
-  }),
-  resave: false,
-  saveUninitialized: false,
-}))
 
 app.use(function (err, req, res, next) {
   res.json({
