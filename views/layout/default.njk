@@ -5,11 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block styles %}
     <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/metisMenu/2.7.0/metisMenu.min.css" rel="stylesheet">
-    <title>Document</title>
+    {% endblock %}
+    <title>管理员</title>
 </head>
 <body>
     <div id="wrapper">
@@ -27,7 +29,7 @@
                 {% if loginUser %}
                     <!-- /.dropdown -->
                     <li>
-                        <a href="###">发表</a>
+                        <a href="/admin/posts/new">发表</a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
@@ -68,6 +70,9 @@
                             <a href="/admin/posts"><i class="fa fa-table fa-fw"></i> 文章列表</a>
                         </li>
                         <li>
+                            <a href="/admin/posts"><i class="fa fa-comments fa-fw"></i> 最新评论</a>
+                        </li>
+                        <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 编辑</a>
                         </li>
                     </ul>
@@ -83,9 +88,11 @@
         </div>
     </div>
 
+    {% block scripts %}
     <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.min.js"></script>
     <script src="//cdn.bootcss.com/metisMenu/2.7.0/metisMenu.min.js"></script>
+    {% endblock %}
 </body>
 </html>

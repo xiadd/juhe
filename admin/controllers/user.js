@@ -14,7 +14,6 @@ module.exports = {
     try {
       const user = await User.findUserByName(userLoginInfo.username)
       if (checkPassword(userLoginInfo.password, user.password)) {
-        res.app.locals.loginUser = user
         req.session.user = userLoginInfo.username
         res.redirect('/admin')
       } else {

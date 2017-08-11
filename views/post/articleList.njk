@@ -7,30 +7,36 @@
             文章列表
         </div>
         <!-- /.panel-heading -->
-        <div class="panel-body">
-            <div class="table-responsive table-bordered">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>标题</th>
-                        <th>标签</th>
-                        <th>创建时间</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for article in articleList %}
+        {% if articleList | length %}
+            <div class="panel-body">
+                <div class="table-responsive table-bordered">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td><a href="/admin/posts/{{ article.id }}">{{ article.id }}</a></td>
-                            <td>{{ article.title }}</td>
-                            <td>{{ article.tag }}</td>
-                            <td>{{ article.created_at }}</td>
+                            <th>id</th>
+                            <th>标题</th>
+                            <th>标签</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
                         </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {% for article in articleList %}
+                            <tr>
+                                <td><a href="/admin/posts/{{ article.id }}">{{ article.id }}</a></td>
+                                <td>{{ article.title }}</td>
+                                <td><span class="label label-{{ ['default', 'primary', 'success', 'warning', 'danger', 'info'] | random }}">{{ article.tag }}</span></td>
+                                <td>{{ article.created_at }}</td>
+                                <td><a href="/admin/posts/{{ article.id }}/delete" class="btn btn-danger btn-xs">删除</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        {% else %}
+            <h2>还没有发表文章</h2>
+        {% endif %}
         <!-- /.panel-body -->
     </div>
 {% endblock %}
