@@ -1,4 +1,4 @@
-const Article = require('../models').Article
+const { Article } = require('../models')
 
 module.exports = {
   async articleCreate (schema) {
@@ -25,5 +25,10 @@ module.exports = {
 
   async articleUpdateAndSave (id, schema) {
     return await Article.update({_id: id}, { $set: schema })
+  },
+
+  // 获取数量
+  async getCount () {
+    return await Article.count()
   }
 }

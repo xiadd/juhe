@@ -37,6 +37,10 @@ app.use(bodyParser.json())
 app.use('/api', routes)
 app.use('/admin', adminSession, adminRoutes)
 
+// 404处理
+app.use(function (req, res, next) {
+  res.status(404).render('error/site_404.njk')
+})
 
 app.use(function (err, req, res, next) {
   res.json({

@@ -15,6 +15,8 @@ db.on('error', function (err) {
 
 require('./user')
 require('./article')
+require('./comment')
 
 exports.User = mongoose.model('User')
 exports.Article = mongoose.model('Article')
+exports.Comment = mongoose.model('Comment')
