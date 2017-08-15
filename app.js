@@ -43,8 +43,9 @@ app.use(function (req, res, next) {
 })
 
 app.use(function (err, req, res, next) {
+  console.log(err)
   res.json({
-    code: 0,
+    code: -1,
     msg: err.message
   })
 })

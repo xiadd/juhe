@@ -7,6 +7,7 @@ const comment = require('./controllers/comment')
 const auth = require('../middlewares/apiAuth')
 
 router.post('/register', user.userRegister)
+router.post('/login', user.userLogin)
 
 // 展示文章
 router.get('/posts', post.postListView)

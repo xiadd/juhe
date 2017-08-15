@@ -1,4 +1,5 @@
 const User = require('../../services/user')
+const { checkPassword } = require('../../libs/salt')
 
 module.exports = {
   async userRegister (req, res, next) {
@@ -16,6 +17,24 @@ module.exports = {
   },
 
   async userLogin (req, res, next) {
-    
+    const userLoginInfo = req.body
+    try {
+      const user = await User.findUserByName(userLoginInfo.username)
+      if (checkPassword(userLoginInfo.password, user.password)) {
+        console.log(req.session)
+        req.session.user = userLoginInfo.username
+        res.json({
+          code: 1,
+          msg: '登录成功'
+        })
+      } else {
+        res.json({
+          code: -1,
+          msg: '登录失败'
+        })
+      }
+    } catch (e) {
+      next(e)
+    }
   }
 }
