@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const session = require('express-session')
+const jwt = require('express-jwt')
 const RedisStore = require('connect-redis')(session)
 const config = require('./config')
 const templateGlobal = require('./libs/staticTemplate')
@@ -22,6 +23,19 @@ const adminSession =  session({
   saveUninitialized: false
 })
 
+const apiJwt = jwt({
+  secret: config.jwt_secret,
+  credentialsRequired: false,
+  getToken: function (req) {
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+      return req.headers.authorization.split(' ')[1];
+    } else if (req.query && req.query.token) {
+      return req.query.token;
+    }
+    return null;
+  }
+})
+
 nunjucks
   .configure('views', {
     autoescape: true,
@@ -34,7 +48,7 @@ app.use('/static', express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use('/api', routes)
+app.use('/api', apiJwt, routes)
 app.use('/admin', adminSession, adminRoutes)
 
 // 404处理

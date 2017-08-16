@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const jwt = require('express-jwt')
+const config = require('../config')
 
 const user = require('./controllers/user')
 const post = require('./controllers/post')
