@@ -14,5 +14,9 @@ module.exports = {
     } catch (e) {
       next(e)
     }
+  },
+
+  async getComments (req, res, next) {
+    
   }
 }
