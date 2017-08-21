@@ -1,6 +1,6 @@
-const path = require('path');
-const webpack = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 const getEntry = require('./getEntry')
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
   entry: getEntry(path.resolve(__dirname, '../public/scripts')),
   output: {
     path: path.resolve('./public/bundles/'),
-    filename: "[name]-[hash].js",
+    filename: '[name]-[hash].js',
     publicPath: 'http://localhost:4000/static/'
   },
   module: {
@@ -26,7 +26,7 @@ module.exports = {
       fileName: 'map.json',
       publicPath: 'http://localhost:4000/static/',
       writeToFileEmit: true,
-      stripSrc: '/static/',
+      stripSrc: '/static/'
     })
   ],
   devServer: {
@@ -37,10 +37,10 @@ module.exports = {
     host: '0.0.0.0',
     port: 4000,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": "true",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization, x-id, Content-Length, X-Requested-With",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-id, Content-Length, X-Requested-With',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
     }
   }
 }
