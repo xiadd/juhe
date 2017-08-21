@@ -8,7 +8,7 @@
     "createSuperUser": "node bin/createSuperUser",
     "serve": "webpack-dev-server --config static_config/webpack.config.dev.js",
     "build": "webpack --config static_config/webpack.config.prod.js",
-    "test": "mocha"
+    "test": "mocha test/**/*.test.js"
   },
   "keywords": [],
   "author": "",
