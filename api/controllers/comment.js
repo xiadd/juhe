@@ -17,7 +17,17 @@ module.exports = {
     }
   },
 
-  async getComments (req, res, next) {
+  async getUserComments (req, res, next) {
+    const id = req.params.id
+    try {
+      const comments = await Comment.getUserComments(id)
+      res.json(comments)
+    } catch (e) {
+      next(e)
+    }
+  },
+
+  async getArticleComments (req, res, next) {
     
   }
 }

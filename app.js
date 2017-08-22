@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
+const log4js = require('log4js')
 const session = require('express-session')
 const expressValidator = require('express-validator')
 const jwt = require('express-jwt')
@@ -8,9 +9,22 @@ const RedisStore = require('connect-redis')(session)
 const config = require('./config')
 const templateGlobal = require('./libs/staticTemplate')
 require('./models')
+const logConfig = require('./log')
 const routes = require('./api/routes')
 const adminRoutes = require('./admin/routes')
 const app = express()
+
+log4js.configure({
+  appenders: {
+    console: { type: 'console' },
+    file: { type: 'file', filename: 'logs/log4jsconnect.log' }
+  },
+  categories: {
+    default: { appenders: ['console'], level: 'debug' },
+    log4jslog: { appenders: ['file'], level: 'debug' }
+  }
+})
+const logger = log4js.getLogger('log4jslog')
 
 const adminSession =  session({
   secret: config.session_secret,
@@ -45,6 +59,7 @@ nunjucks
   .addGlobal('loadCss', templateGlobal.loadCss)
   .addGlobal('loadScript', templateGlobal.loadScript)
 
+app.use(log4js.connectLogger(logger, { level: log4js.levels.INFO }));
 app.use('/static', express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
