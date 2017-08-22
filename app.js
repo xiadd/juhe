@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
 const session = require('express-session')
+const expressValidator = require('express-validator')
 const jwt = require('express-jwt')
 const RedisStore = require('connect-redis')(session)
 const config = require('./config')
@@ -47,6 +48,8 @@ nunjucks
 app.use('/static', express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+app.use(expressValidator())
 
 app.use('/api', apiJwt, routes)
 app.use('/admin', adminSession, adminRoutes)

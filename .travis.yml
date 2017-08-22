@@ -5,6 +5,10 @@ cache:
   directories:
     - "node_modules"
 
+services:
+  - mongodb
+  - redis
+
 notifications:
   email:
     - xiadd0102@gmail.com

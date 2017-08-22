@@ -1,11 +1,13 @@
 {% extends "../layout/default.njk" %}
 
 {% block container %}
-    <br>
-    <div class="panel panel-default">
-        <div class="panel-heading">{{ article.title }}</div>
-        <div class="panel-body">
-            {{ user }}
-        </div>
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-heading">{{ article.title }}</div>
+    <div class="panel-body">
+      <pre>
+        {{ user }}
+      </pre>
     </div>
+  </div>
 {% endblock %}

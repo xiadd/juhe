@@ -1,98 +1,103 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% block styles %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block styles %}
     <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/metisMenu/2.7.0/metisMenu.min.css" rel="stylesheet">
-    {% endblock %}
-    <title>管理员</title>
+  {% endblock %}
+  <title>管理员</title>
 </head>
 <body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="###">Blog</a>
-            </div>
-            <ul class="nav navbar-top-links navbar-right">
-                {% if loginUser %}
-                    <!-- /.dropdown -->
-                    <li>
-                        <a href="/admin/posts/new">发表</a>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="###"><i class="fa fa-user fa-fw"></i> {{ loginUser.username }}</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                {% endif %}
+  <div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="###">Blog</a>
+      </div>
+      <ul class="nav navbar-top-links navbar-right">
+        {% if loginUser %}
+            <!-- /.dropdown -->
+          <li>
+            <a href="/admin/posts/new">发表</a>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
+              <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <a href="###"><i class="fa fa-user fa-fw"></i> {{ loginUser.username }}</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+              </li>
             </ul>
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav in" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="/admin/users"><i class="fa fa-dashboard fa-fw"></i> 用户列表</a>
-                        </li>
-                        <li>
-                            <a href="/admin/posts"><i class="fa fa-table fa-fw"></i> 文章列表</a>
-                        </li>
-                        <li>
-                            <a href="/admin/posts"><i class="fa fa-comments fa-fw"></i> 最新评论</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 编辑</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-        </nav>
-
-        <div id="page-wrapper">
-            {% block container %}
-
-            {% endblock %}
+              <!-- /.dropdown-user -->
+          </li>
+            <!-- /.dropdown -->
+        {% endif %}
+      </ul>
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+          <ul class="nav in" id="side-menu">
+            <li class="sidebar-search">
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+              </div>
+                <!-- /input-group -->
+            </li>
+            <li>
+              <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> 主面板</a>
+            </li>
+            <li>
+              <a href="/admin/users"><i class="fa fa-user fa-fw"></i> 用户列表</a>
+            </li>
+            <li>
+              <a href="/admin/posts"><i class="fa fa-table fa-fw"></i> 文章列表</a>
+            </li>
+            <li>
+              <a href="/admin/comments"><i class="fa fa-comments fa-fw"></i> 最新评论</a>
+            </li>
+            <li>
+              <a href="forms.html"><i class="fa fa-edit fa-fw"></i> 编辑</a>
+            </li>
+          </ul>
         </div>
-    </div>
+          <!-- /.sidebar-collapse -->
+      </div>
+    </nav>
 
-    {% block scripts %}
+    <div id="page-wrapper">
+      {% block container %}
+
+      {% endblock %}
+    </div>
+  </div>
+
+  {% block scripts %}
     <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.min.js"></script>
     <script src="//cdn.bootcss.com/metisMenu/2.7.0/metisMenu.min.js"></script>
-    {% endblock %}
+  {% endblock %}
 </body>
 </html>

@@ -3,6 +3,7 @@ const Comment = require('../../services/comment')
 module.exports = {
   async commentCreate (req, res, next) {
     const schema = req.body
+    schema.author = req.user.id
     try {
       const newComment = await Comment.newComment(schema)
       if (newComment) {

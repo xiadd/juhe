@@ -1,7 +1,6 @@
 const User = require('../services/user')
 
 exports.apiLogin = async function (req, res, next) {
-  console.log(req.session)
   if (req.user) {
     return next()
   }
