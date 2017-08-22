@@ -5,7 +5,7 @@ module.exports = {
    * 新增评论
    * 
    * @param {object} schema 
-   * @returns 
+   * @returns {promise}
    */
   async newComment (schema) {
     try {

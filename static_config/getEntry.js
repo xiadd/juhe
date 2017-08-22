@@ -1,5 +1,10 @@
 const glob = require('glob')
 
+/**
+ * 获取webpack入口文件
+ * @param {string} entryDir 
+ * @param {function} cb 
+ */
 function getEntry (entryDir, cb) {
   const entry = {}
   const pattern = entryDir + '/**/*.js'

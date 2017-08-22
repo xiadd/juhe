@@ -17,10 +17,8 @@ module.exports = {
     const articleSchema = req.body
     try {
       const post = await Post.articleUpdateAndSave(id, articleSchema)
-      console.log(post)
       return res.redirect('/admin/posts')
     } catch (e) {
-      console.log(e)
       next(e)
     }
   },
@@ -36,9 +34,12 @@ module.exports = {
   },
 
   async articleListView (req, res) {
-    const articleList = await Post.articleList(20)
+    const page = req.query.page
+    const limit = req.query.limit
+    const articleList = await Post.articleList(limit, page || 1)
     return res.render('post/articleList.njk', {
-      articleList: articleList
+      articleList: articleList.docs,
+      total: articleList.total
     })
   },
 
