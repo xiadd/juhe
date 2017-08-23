@@ -39,7 +39,8 @@ module.exports = {
     const articleList = await Post.articleList(limit, page || 1)
     return res.render('post/articleList.njk', {
       articleList: articleList.docs,
-      total: articleList.total
+      pageCount: articleList.pages,
+      itemCount: articleList.limit
     })
   },
 
